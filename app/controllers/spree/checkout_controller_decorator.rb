@@ -6,6 +6,7 @@ Spree::CheckoutController.class_eval do
     def set_affilate
       if @order.payment? && session[:affiliate]
         @order.affiliate = Spree::Affiliate.find_by(path: session[:affiliate])
+        @order.save!
       end
     end
 
